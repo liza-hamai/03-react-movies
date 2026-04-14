@@ -12,7 +12,6 @@ function App() {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
-
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
 
   const handleMovies = async(query: string) => {
