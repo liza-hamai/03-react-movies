@@ -33,6 +33,7 @@ function App() {
     }
     finally{
       setLoading(false);
+      setError(false);
     }
 
   };
@@ -44,7 +45,7 @@ function App() {
       {loading && <Loader />}
       {!loading && error && <ErrorMessage />}
       <MovieGrid onSelect={setSelectedMovie} movies={movies} />
-      {selectedMovie && <MovieModal selectedMovie={selectedMovie} onClose={() => setSelectedMovie(null)}/>}
+      {selectedMovie && <MovieModal movie={selectedMovie} onClose={() => setSelectedMovie(null)}/>}
     </>
   )
 }
