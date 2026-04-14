@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom"
 import type { Movie } from "../../types/movie"
 import css from "./MovieModal.module.css"
-import { useEffect } from "react"
+import React, { useEffect } from "react"
 
 interface MovieModalProps {
     movie: Movie, 
@@ -30,9 +30,15 @@ export default function MovieModal ({movie, onClose}: MovieModalProps) {
         }
     }, []);
 
+    const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
+        if (event.target === event.currentTarget) {
+            onClose();
+        }
+    }
+
     return createPortal(
-    <div className={css.backdrop} role="dialog" aria-modal="true" onClick={onClose}>
-    <div className={css.modal} onClick={(e) => {e.stopPropagation()}}>
+    <div className={css.backdrop} role="dialog" aria-modal="true" onClick={handleBackdropClick}>
+    <div className={css.modal}>
         <button className={css.closeButton} aria-label="Close modal" onClick={onClose}>
         &times;
         </button>

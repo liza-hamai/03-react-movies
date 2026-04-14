@@ -18,6 +18,8 @@ function App() {
 
   const handleMovies = async(query: string) => {
     setLoading(true);
+    setError(false);
+    setMovies([]);
     try {
     const data = await fetchMovies(query);
     if (data.length === 0){
@@ -33,7 +35,6 @@ function App() {
     }
     finally{
       setLoading(false);
-      setError(false);
     }
 
   };
